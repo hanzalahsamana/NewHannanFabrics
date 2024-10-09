@@ -4,9 +4,9 @@ import React from "react";
 import product1 from "../../../assets/images/productImages/Teal-Blue-1.jpg";
 import ProductDetailCard from "@/components/UI/productDetailCard";
 
-const ProductDetail = () => {
+const ProductDetail = ({ params }) => {
   const product = {
-    id: 1,
+    id: params.id,
     name: "Black - Wash n Wear Unstitched Fabric",
     alt: "Black - Wash n Wear Unstitched Fabric",
     brand: "HANNAN FABRICS",

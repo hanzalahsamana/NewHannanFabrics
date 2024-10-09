@@ -1,12 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { FaShoppingBag } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import logo from "../../assets/images/logos/logo.webp";
+import { useSelector } from "react-redux";
+
 
 const Header = () => {
+  const cartData = useSelector((state)=>state?.cartData || [])
+  const totalQuantity = cartData.reduce((accumulator, cartItem) => {
+    return accumulator + (cartItem?.quantity || 0);
+  }, 0);
   return (
     <header className="bg-white shadow-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-10">
@@ -43,10 +48,12 @@ const Header = () => {
           <button className="text-gray-600 hover:text-yellow-500">
             <CiUser />
           </button>
-          <button className="text-gray-600 hover:text-yellow-500">
+          <button className="text-gray-600 hover:text-yellow-500 relative">
             <Link href="/cart">
               <HiOutlineShoppingBag />
+
             </Link>
+            <span className="absolute text-[14px] bg-white p-[1px] right-[-4px] bottom-[-6px] ">{totalQuantity}</span>
           </button>
         </div>
       </div>

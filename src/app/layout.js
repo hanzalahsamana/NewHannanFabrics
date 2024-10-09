@@ -26,7 +26,7 @@ const RootLayout = ({ children }) => {
   return (
     <Provider store={store}>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
           <Header />
           {children}
           <Footer />

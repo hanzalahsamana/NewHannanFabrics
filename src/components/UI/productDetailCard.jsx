@@ -6,10 +6,13 @@ import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCartData } from "@/Redux/CartData/cartDataSlice";
+import { TbTruckDelivery } from "react-icons/tb";
+import QuantityControl from "./QuantityControl";
 
-const ProductDetailCard = ({product}) => {
+const ProductDetailCard = ({ product }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const [mainImage, setmainImage] = useState(0);
 
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -19,28 +22,35 @@ const ProductDetailCard = ({product}) => {
     setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
- const handleAddToCart = ()=>{
-  dispatch(addCartData({quantity:quantity , ...product}))
- }
+  const handleAddToCart = () => {
+    dispatch(addCartData({ quantity: quantity, ...product }));
+  };
 
   return (
     <div className={styles.container}>
-      <div className={styles.productSection}>
+      <div className={`max-[900px]:flex-col ${styles.productSection}`}>
         <div className={styles.productImages}>
-          <img src={product.imagesUrl[0]} alt="Fabric" className={styles.mainImage} />
+          <img
+            src={product.imagesUrl[mainImage]}
+            alt="Fabric"
+            className={`max-[900px]:max-w-full max-w-[450px] ${styles.mainImage}`}
+          />
           <div className={styles.thumbnailContainer}>
             <img
               src={product.imagesUrl[0]}
+              onClick={() => setmainImage(0)}
               alt="thumbnail 1"
               className={styles.thumbnail}
             />
             <img
               src={product.imagesUrl[1]}
+              onClick={() => setmainImage(1)}
               alt="thumbnail 2"
               className={styles.thumbnail}
             />
             <img
               src={product.imagesUrl[2]}
+              onClick={() => setmainImage(2)}
               alt="thumbnail 3"
               className={styles.thumbnail}
             />
@@ -79,21 +89,12 @@ const ProductDetailCard = ({product}) => {
             {product.status ? "In Stock" : "Out Of Stock"}
           </p>
 
-          <div className={styles.quantityContainer}>
-            <button
-              className={styles.quantityButton}
-              onClick={decreaseQuantity}
-            >
-              -
-            </button>
-            <span className={styles.quantityDisplay}>{quantity}</span>
-            <button
-              className={styles.quantityButton}
-              onClick={increaseQuantity}
-            >
-              +
-            </button>
-          </div>
+          <QuantityControl
+            quantity={quantity}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+          />
+
           <div className={styles.productDetail}>
             <p>
               Type: <strong>{product.type}</strong>
@@ -104,20 +105,26 @@ const ProductDetailCard = ({product}) => {
           </div>
 
           <div className={styles.buttons}>
-          <button onClick={handleAddToCart} className="py-[15px] w-full mt-3 bg-white border-black border-[2px] text-[#000000] text-[16px]  transition-all duration-300 hover:scale-105">
-            Add To Cart
-          </button>
-          <button className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
-            Buy It Now
-          </button>
+            <button
+              onClick={handleAddToCart}
+              className="py-[15px] w-full mt-3 bg-white border-black border-[2px] text-[#000000] text-[16px]  transition-all duration-300 hover:scale-105"
+            >
+              Add To Cart
+            </button>
+            <button className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
+              Buy It Now
+            </button>
           </div>
           <p className={styles.note}>
-            Please note that the actual color of the fabric may vary slightly
+            *Please note that the actual color of the fabric may vary slightly
             due to photography lighting and screen settings.
           </p>
 
           <div className={styles.deliveryInfo}>
-            <p>Delivery in 2-3 working days</p>
+            <p className="flex gap-2 items-center">
+              <TbTruckDelivery className="text-xl" /> Delivery in 2-3 working
+              days
+            </p>
           </div>
         </div>
       </div>
