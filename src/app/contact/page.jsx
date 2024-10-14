@@ -59,7 +59,6 @@ const Contact = () => {
                 </label>
               </div>
             </div>
-            {/* Input 3 */}
             <div className={`relative w-full ${style.InputCont}`}>
               <input
                 type="text"

@@ -21,7 +21,7 @@ const CartProductCard = ({ product }) => {
   };
 
   return (
-    <div className="flex items-center border-t border-[#dbdbdb]  py-8 px-4">
+    <div className="flex items-start border-t border-[#dbdbdb]  py-8 px-4">
       <div className="flex w-1/2">
         <img
           src={product?.imagesUrl[0]}
@@ -40,24 +40,24 @@ const CartProductCard = ({ product }) => {
           <p className="text-gray-500 text-sm">Size: {product?.size}</p>
         </div>
       </div>
-      <div className='w-1/4'>
+      <div className="w-1/4 ">
         <QuantityControl
           quantity={quantity}
           increaseQuantity={incrementQuantity}
           decreaseQuantity={decrementQuantity}
         />
       </div>
-      <div className="flex items-center w-1/4">
+      <div className="flex justify-end items-center w-1/4">
         <p className="ml-3 text-[12px]  text-gray-800">
-          <sapn className="text-lg">
+          <span className="text-lg">
             Rs. {(product.discountedPrice * quantity).toFixed(2)}
-          </sapn>
+          </span>
           PKR
         </p>
 
         <button
           className="ml-4 text-gray-600 hover:text-red-500"
-          onClick={() => deleteCartData(product?.id)}
+          onClick={()=>dispatch(deleteCartData())}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

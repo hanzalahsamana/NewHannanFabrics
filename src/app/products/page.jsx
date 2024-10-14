@@ -2,6 +2,7 @@
 
 import ProductCard from "@/components/UI/productCard";
 import product1 from "../../assets/images/productImages/Teal-Blue-1.jpg";
+import product2 from "../../assets/images/productImages/Teal-Blue-2.jpg";
 import Link from "next/link";
 
 const Products = () => {
@@ -14,7 +15,8 @@ const Products = () => {
       originalPrice: "Rs. 4,500.00 PKR",
       discountedPrice: "Rs. 2,660.00 PKR",
       discount: "-30% OFF",
-      imageUrl: product1.src,
+      imageUrl2: product1.src,
+      imageUrl: product2.src,
     },
     {
       id: 2,
@@ -24,7 +26,9 @@ const Products = () => {
       originalPrice: "Rs. 5,000.00 PKR",
       discountedPrice: "Rs. 2,800.00 PKR",
       discount: "-30% OFF",
-      imageUrl: product1.src,
+      imageUrl2: product1.src,
+      imageUrl: product2.src,
+
     },
     {
       id: 3,
@@ -34,7 +38,9 @@ const Products = () => {
       originalPrice: "Rs. 4,500.00 PKR",
       discountedPrice: "Rs. 2,660.00 PKR",
       discount: "-30% OFF",
-      imageUrl: product1.src,
+      imageUrl2: product1.src,
+      imageUrl: product2.src,
+
     },
     {
       id: 4,
@@ -44,7 +50,8 @@ const Products = () => {
       originalPrice: "Rs. 5,000.00 PKR",
       discountedPrice: "Rs. 2,800.00 PKR",
       discount: "-30% OFF",
-      imageUrl: product1.src,
+      imageUrl2: product1.src,
+      imageUrl: product2.src,
     },
   ];
 

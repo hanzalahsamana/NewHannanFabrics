@@ -7,47 +7,22 @@ import { useSelector } from "react-redux";
 import CartTotalCard from "@/components/UI/cartTotalCard";
 
 const Cart = () => {
-  // const cartData = useSelector((state) => state?.cartData || []);
-  const cartData = [
-    {
-      id: 4,
-      name: "Black - Wash n Wear Unstitched Fabric",
-      alt: "Black - Wash n Wear Unstitched Fabric",
-      brand: "HANNAN FABRICS",
-      originalPrice: 4500,
-      discountedPrice: 2660,
-      discount: "-30% OFF",
-      imagesUrl: [product1.src, product1.src, product1.src],
-      status: true,
-      type: "Unstiched",
-      size: "4.5 meters",
-      reviews: 4,
-    },
-    {
-      id: 4,
-      name: "Black - Wash n Wear Unstitched Fabric",
-      alt: "Black - Wash n Wear Unstitched Fabric",
-      brand: "HANNAN FABRICS",
-      originalPrice: 4500,
-      discountedPrice: 2660,
-      discount: "-30% OFF",
-      imagesUrl: [product1.src, product1.src, product1.src],
-      status: true,
-      type: "Unstiched",
-      size: "4.5 meters",
-      reviews: 4,
-    },
-  ];
+  const cartData = useSelector((state) => state?.cartData || []);
 
+  const totalPrice = cartData.reduce((accumulator, cartItem) => {
+    return accumulator + (cartItem.discountedPrice * cartItem.quantity)
+  }, 0);
+  console.log(totalPrice);
+  
   return (
     <div className="flex items-center flex-col">
-      <div className="max-w-[1100px] w-full">
+      <div className="max-w-[1100px] w-full pt-[50px]">
         {cartData?.length > 0 ? (
           <div>
             <div className='flex justify-between' >
-              <h1 className="my-[8px] pl-[15px] text-[20px] w-1/2">Product</h1>
-              <h1 className="my-[8px] pl-[15px] text-[20px] w-1/4">Quantity</h1>
-              <h1 className="my-[8px] pl-[15px] text-[20px] w-1/4">Amount</h1>
+              <h1 className="my-[20px] pl-[15px] text-[20px] w-1/2">Product</h1>
+              <h1 className="my-[20px] pl-[15px] text-[20px] w-1/4">Quantity</h1>
+              <h1 className="my-[20px] pl-[15px] text-[20px] flex justify-center w-1/4">Amount</h1>
             </div>
             <div>
               {cartData?.map((product) => (
@@ -55,7 +30,7 @@ const Cart = () => {
               ))}
             </div>
             <div>
-            <CartTotalCard/>
+            <CartTotalCard totalPrice={totalPrice}/>
             </div>
           </div>
         ) : (

@@ -1,11 +1,11 @@
 import React from "react";
 
-const CartTotalCard = ({ totalAmount }) => {
+const CartTotalCard = ({ totalPrice }) => {
   return (
-    <div className='flex flex-col items-end justify-center'>
+    <div className='flex flex-col items-end gap-5 px-[30px] py-12 border-t border-[#dbdbdb] justify-center'>
       <div className='flex gap-[50px]'>
         <p>Estimated total</p>
-        <p>Rs. {totalAmount?.toFixed(2)} PKR</p>
+        <p className='font-bold'>Rs. {totalPrice?.toFixed(2)} PKR</p>
       </div>
       <div>
         <p>Taxes, discounts and shipping calculated at checkout.</p>

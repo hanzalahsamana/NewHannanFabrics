@@ -6,7 +6,6 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import logo from "../../assets/images/logos/logo.webp";
 import { useSelector } from "react-redux";
 
-
 const Header = () => {
   const cartData = useSelector((state)=>state?.cartData || [])
   const totalQuantity = cartData.reduce((accumulator, cartItem) => {
@@ -52,8 +51,8 @@ const Header = () => {
             <Link href="/cart">
               <HiOutlineShoppingBag />
 
-            </Link>
             <span className="absolute text-[14px] bg-white p-[1px] right-[-4px] bottom-[-6px] ">{totalQuantity}</span>
+            </Link>
           </button>
         </div>
       </div>

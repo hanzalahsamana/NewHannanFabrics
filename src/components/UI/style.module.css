@@ -30,12 +30,14 @@
     transition: 0.2s all ease-in-out;
     cursor: pointer;
 }
+
 @media (max-width:900px) {
-    .thumbnailContainer{
+    .thumbnailContainer {
         display: grid;
-        grid-template-columns: repeat(3 , 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
-    .thumbnail{
+
+    .thumbnail {
         width: 100%;
         height: auto;
     }
@@ -164,4 +166,10 @@
     background-color: #e0f7fa;
     padding: 10px;
     color: #00796b;
+}
+.ProductCardContainer img{
+    transition: .4s cubic-bezier(.25,.46,.45,.94);
+}
+.ProductCardContainer:hover img {
+    scale: 1.04;
 }
