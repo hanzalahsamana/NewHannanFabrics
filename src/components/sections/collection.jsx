@@ -26,7 +26,7 @@ const Collection = () => {
       }
       ]
   return (
-    <div className="grid grid-cols-3 px-[30px] gap-5 m-6">
+    <div className="grid grid-cols-3 max-[700px]:grid-cols-1 gap-5 m-6">
       {collections.map((collection) => (
         <CollectionCard key={collection.id} collection={collection} />
       ))}

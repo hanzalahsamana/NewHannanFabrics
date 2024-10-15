@@ -1,8 +1,16 @@
 import React from 'react'
+import ProductRecieptCard from './productRecieptCard'
 
-const ProductsRecipt = () => {
+const ProductsRecipt = ({products}) => {
+  
   return (
-    <div className='w-full' >productsRecipt</div>
+    <div className='w-full max-w-[500px] bg-[#F5F5F5]' >
+      <div>
+        {products.map((item , index)=>(
+          <ProductRecieptCard key={item.id} product={item}/>
+        ))}
+      </div>
+    </div>
   )
 }
 

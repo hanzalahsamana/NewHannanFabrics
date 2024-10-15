@@ -21,8 +21,8 @@ const CartProductCard = ({ product }) => {
   };
 
   return (
-    <div className="flex items-start border-t border-[#dbdbdb]  py-8 px-4">
-      <div className="flex w-1/2">
+    <div className="flex items-start  border-t border-[#dbdbdb] max-[750px]:flex-wrap max-[750px]:items-center  py-8 px-4">
+      <div className="flex w-1/2  max-[750px]:w-full">
         <img
           src={product?.imagesUrl[0]}
           alt="Product"
@@ -31,7 +31,7 @@ const CartProductCard = ({ product }) => {
         <div className="ml-4 flex flex-col gap-[4px]">
           <h3 className="text-xs text-gray-700 uppercase">HANNAN FABRICS</h3>
           <p className="text-[15px] mt-2 font-semibold text-gray-800">
-            Mehroon - 100% Pure Cotton Unstitched Fabric
+            {product?.name}
           </p>
           <p className="text-gray-500 text-sm">
             Rs. {product?.discountedPrice.toFixed(2)}
@@ -40,19 +40,19 @@ const CartProductCard = ({ product }) => {
           <p className="text-gray-500 text-sm">Size: {product?.size}</p>
         </div>
       </div>
-      <div className="w-1/4 ">
+      <div className="w-1/4 max-[750px]:w-1/2 mt-[15px]">
         <QuantityControl
           quantity={quantity}
           increaseQuantity={incrementQuantity}
           decreaseQuantity={decrementQuantity}
         />
       </div>
-      <div className="flex justify-end items-center w-1/4">
+      <div className="flex justify-end items-center w-1/4 max-[750px]:w-1/2 mt-[15px]">
         <p className="ml-3 text-[12px]  text-gray-800">
           <span className="text-lg">
             Rs. {(product.discountedPrice * quantity).toFixed(2)}
           </span>
-          PKR
+          
         </p>
 
         <button

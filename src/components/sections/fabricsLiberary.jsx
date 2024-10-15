@@ -3,7 +3,7 @@
 import "./style.css";
 const FabricsLiberary = () => {
   return (
-    <div className="fabric-cutting-container">
+    <div className="fabric-cutting-container py-[10px]">
       <div className="fabric-img">
         <div className="fabric-text-wrap">
           <h2>Fabric Library</h2>

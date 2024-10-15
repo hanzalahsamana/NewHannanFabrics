@@ -15,7 +15,7 @@ const CollectionAbout = () => {
         </div>
       </div>
       <div className="text-wrap">
-        <h1>The Luxury Cotton</h1>
+        <h1 className="text-[25px]">The Luxury Cotton</h1>
         <p>
           Discover the luxury of 100% pure cotton with our Shan-e-Azwaan
           collection. Designed for those who appreciate comfort and quality,
