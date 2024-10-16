@@ -3,11 +3,9 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 import { store } from "@/Redux/store";
 import { Provider } from "react-redux";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/layout/layout";
-import { useEffect } from "react";
 
 const geistSans = localFont({
   src: "../assets/fonts/GeistVF.woff",
@@ -21,19 +19,17 @@ const geistMono = localFont({
 });
 
 const RootLayout = ({ children }) => {
-  useEffect(()=>{
-    console.log(">>>>>>>>>>>>>>>>>>>>");
-    
-  })
   return (
     <Provider store={store}>
       <html lang="en">
+        <title>Hannan Fabrics</title>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           suppressHydrationWarning
         >
           <Layout chidren={children} />
-          <ToastContainer/>
+          <ToastContainer />
         </body>
       </html>
     </Provider>

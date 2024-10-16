@@ -57,7 +57,7 @@ const CartProductCard = ({ product }) => {
 
         <button
           className="ml-4 text-gray-600 hover:text-red-500"
-          onClick={()=>dispatch(deleteCartData())}
+          onClick={()=>dispatch(deleteCartData(product?.id))}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

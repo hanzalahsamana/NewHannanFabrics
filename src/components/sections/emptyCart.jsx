@@ -7,10 +7,6 @@ const EmptyCart = () => {
       <Link href='/products' className="py-[15px] w-[250px] my-6 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
             Continue Shopping
       </Link>
-      <p className="text-gray-600 mb-3">Have an account?</p>
-      <Link href="/login" className="text-blue-600 hover:underline">
-        Log in to check out faster.
-      </Link>
     </div>
   );
 };

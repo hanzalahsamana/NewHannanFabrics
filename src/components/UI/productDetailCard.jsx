@@ -8,8 +8,11 @@ import { useDispatch } from "react-redux";
 import { addCartData } from "@/Redux/CartData/cartDataSlice";
 import { TbTruckDelivery } from "react-icons/tb";
 import QuantityControl from "./QuantityControl";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const ProductDetailCard = ({ product }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setmainImage] = useState(0);
@@ -111,7 +114,11 @@ const ProductDetailCard = ({ product }) => {
             >
               Add To Cart
             </button>
-            <button className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
+            <button onClick={() => {
+              handleAddToCart();
+              router.push('/checkout')
+            }}
+               className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
               Buy It Now
             </button>
           </div>

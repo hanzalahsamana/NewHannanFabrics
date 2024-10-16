@@ -9,13 +9,11 @@ export const cartDataSlice = createSlice({
   initialState,
   reducers: {
 
-    // Set Cart Data
     setCartData: (state, action) => {
       localStorage.setItem('cartDataa', JSON.stringify(action.payload));
       return action.payload;
     },
 
-    // Add Cart Data
     addCartData: (state, action) => {
       const itemIndex = state.findIndex(item => item.id === action.payload.id);
       if (itemIndex === -1) {
@@ -26,8 +24,9 @@ export const cartDataSlice = createSlice({
       localStorage.setItem('cartDataa', JSON.stringify(state));
     },
 
-    // Delete Cart Data
     deleteCartData: (state, action) => {
+      console.log(state , action.payload);
+      
       const updatedState = state.filter(data => data.id !== action.payload);
       localStorage.setItem('cartDataa', JSON.stringify(updatedState));
       return updatedState;

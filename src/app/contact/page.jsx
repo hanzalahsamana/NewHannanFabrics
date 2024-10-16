@@ -25,7 +25,7 @@ const Contact = () => {
         .send(
           "service_efmya6i",
           "template_a971kjl",
-          formData,
+          {...formData , to:'Hanzalah Samana', from:'Hannan Fabrics'},
           "jpZOa3MoTD5kfqqO9"
         )
         .then((response) => {

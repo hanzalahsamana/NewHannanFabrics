@@ -8,12 +8,13 @@ import logo from "../../assets/images/logos/logo.webp";
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from "react-redux";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
+  const router = useRouter()
   const cartData = useSelector((state) => state?.cartData || [])
   const totalQuantity = cartData.reduce((accumulator, cartItem) => {
     return accumulator + (cartItem?.quantity || 0);
@@ -48,21 +49,21 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex gap-3 space-x-4">
-          <Link className={`text-[18px] hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} href="/">
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/")}>
             Home
-          </Link>
-          <Link className={`text-[18px] hover:opacity-[0.6] ${pathname === '/heritage' ? 'underline font-semibold' : ''}`} href="/heritage">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/collection/heritage")}>
             Heritage
-          </Link>
-          <Link className={`text-[18px] hover:opacity-[0.6] ${pathname === '/shane-azwan' ? 'underline font-semibold' : ''}`} href="/shane-azwan">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/collection/shane-azwan")}>
             Shane Azwan
-          </Link>
-          <Link className={`text-[18px] hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} href="/products">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/products")}>
             Products
-          </Link>
-          <Link className={`text-[18px] hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} href="/contact">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/contact")}>
             Contact
-          </Link>
+          </p>
         </nav>
 
         <div className="flex items-center space-x-4 text-[24px]">
@@ -78,21 +79,31 @@ const Header = () => {
 
       <div className={`max-w-[1500px] md:hidden transition-all duration-3000 ease-in-out ${isOpen ? 'max-h-[260px]' : 'max-h-[0px] overflow-hidden'}`}>
         <nav className="flex flex-col gap-6 p-[30px] bg-white py-4">
-          <Link onClick={toggleMenu} className={`text-[18px] hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} href="/">
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/")
+            toggleMenu()
+          }}>
             Home
-          </Link>
-          <Link onClick={toggleMenu} className={`text-[18px] hover:opacity-[0.6] ${pathname === '/heritage' ? 'underline font-semibold' : ''}`} href="/heritage">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/collection/heritage")
+            toggleMenu()
+          }}>
             Heritage
-          </Link>
-          <Link onClick={toggleMenu} className={`text-[18px] hover:opacity-[0.6] ${pathname === '/shane-azwan' ? 'underline font-semibold' : ''}`} href="/shane-azwan">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/collection/shane-azwan")
+            toggleMenu()
+          }}>
             Shane Azwan
-          </Link>
-          <Link onClick={toggleMenu} className={`text-[18px] hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} href="/products">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/products")
+            toggleMenu()
+          }}>
             Products
-          </Link>
-          <Link onClick={toggleMenu} className={`text-[18px] hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} href="/contact">
+          </p>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/contact")
+            toggleMenu()
+          }}>
             Contact
-          </Link>
+          </p>
         </nav>
       </div>
 

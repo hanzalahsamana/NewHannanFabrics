@@ -9,20 +9,20 @@ const Collection = () => {
         title: "Heritage",
         alt: "Heritage",
         image: collection1.src,
-        link: "/collections/heritage",
+        link: "/collection/heritage",
       },
       {
         id: 2,
         title: "Shane Azwan",
         alt: "Shane Azwan",
         image: collection1.src,
-        link: "/collections/shan_e_azwan",
+        link: "/collection/shane-azwan",
       }, {
         id: 3,
         title: "Heritage",
         alt: "Heritage",
         image: collection1.src,
-        link: "/collections/heritage",
+        link: "/collection/heritage",
       }
       ]
   return (
