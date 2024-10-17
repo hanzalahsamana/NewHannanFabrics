@@ -5,8 +5,11 @@ import emailjs from "emailjs-com";
 import FormInput from "./formInput";
 import { Input } from "postcss";
 import { toast } from "react-toastify";
+import { clearCartData } from "@/Redux/CartData/cartDataSlice";
+import { useDispatch } from "react-redux";
 
 const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
+  const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: "",
@@ -21,11 +24,15 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
   });
 
   const handleChange = (e) => {
+    
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  
   const validateForm = () => {
+    debugger;
+    dispatch(clearCartData())
+    console.log("ok");
     const newErrors = {};
     const { email, country, firstName, lastName, address, city, phone } =
       formData;
@@ -43,7 +50,11 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
     const {
       email,
       country,
@@ -85,9 +96,7 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
       },
     };
 
-    if (!validateForm()) {
-      return;
-    }
+   
 
     emailjs
       .send(
@@ -99,6 +108,7 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
       .then((response) => {
         console.log(data);
         toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
+        dispatch(clearCartData())
         
         console.log("Email sent successfully!", response);
         setFormData({

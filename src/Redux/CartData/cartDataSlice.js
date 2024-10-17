@@ -30,10 +30,14 @@ export const cartDataSlice = createSlice({
       const updatedState = state.filter(data => data.id !== action.payload);
       localStorage.setItem('cartDataa', JSON.stringify(updatedState));
       return updatedState;
+    },
+    clearCartData: (state) => {
+      localStorage.setItem('cartDataa', null);
+      return initialState;
     }
   },
 });
 
-export const { setCartData, addCartData, deleteCartData } = cartDataSlice.actions;
+export const { setCartData, addCartData, deleteCartData , clearCartData } = cartDataSlice.actions;
 
 export default cartDataSlice.reducer;
