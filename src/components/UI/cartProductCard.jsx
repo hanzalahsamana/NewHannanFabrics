@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import QuantityControl from "./QuantityControl";
+import QuantityControl from "./quantityControl";
 import { useDispatch } from "react-redux";
 import { addCartData, deleteCartData } from "@/Redux/CartData/cartDataSlice";
 

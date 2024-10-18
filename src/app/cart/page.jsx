@@ -1,8 +1,6 @@
 "use client";
 import EmptyCart from "@/components/sections/emptyCart";
 import CartProductCard from "@/components/UI/cartProductCard";
-import product1 from "../../assets/images/productImages/Teal-Blue-1.jpg";
-
 import { useSelector } from "react-redux";
 import CartTotalCard from "@/components/UI/cartTotalCard";
 

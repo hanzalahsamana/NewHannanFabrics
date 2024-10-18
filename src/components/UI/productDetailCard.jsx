@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCartData } from "@/Redux/CartData/cartDataSlice";
 import { TbTruckDelivery } from "react-icons/tb";
-import QuantityControl from "./QuantityControl";
+import QuantityControl from "./quantityControl";
 import { useRouter } from "next/navigation";
 
 const ProductDetailCard = ({ product }) => {
