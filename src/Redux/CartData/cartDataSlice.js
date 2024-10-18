@@ -14,8 +14,6 @@ export const cartDataSlice = createSlice({
     },
 
     addCartData: (state, action) => {
-      console.log(state, ">>>>>><<<<<<<<<", action.payload);
-
       const itemIndex = state?.findIndex((item) => {
         return item._id === action.payload._id;
       });
@@ -28,8 +26,6 @@ export const cartDataSlice = createSlice({
     },
 
     deleteCartData: (state, action) => {
-      console.log(state, action.payload);
-
       const updatedState = state.filter((data) => data._id !== action.payload);
       localStorage.setItem("cartDataa", JSON.stringify(updatedState));
       return updatedState;

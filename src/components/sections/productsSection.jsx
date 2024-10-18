@@ -31,7 +31,7 @@ const ProductsSection = ({ maxLength, collection , name }) => {
                         <Link
                             className="cursor-pointer"
                             key={product._id}
-                            href={`products/${product._id}`}
+                            href={`/products/${product._id}`}
                         >
                             <ProductCard product={product} />
                         </Link>

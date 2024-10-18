@@ -3,14 +3,14 @@ import { useState } from "react";
 import styles from "./style.module.css";
 const ProductCard = ({ product }) => {
   
-  const [imageUrl, setImageUrl] = useState(product?.images[0]);
+  const [imageUrl, setImageUrl] = useState(product?.images[1]);
 
   const handleMouseEnter = () => {
-    setImageUrl(product?.images[1])
+    setImageUrl(product?.images[0])
   };
 
   const handleMouseLeave = () => {
-    setImageUrl(product?.images[0]);
+    setImageUrl(product?.images[1]);
   };
   return (
     <div
