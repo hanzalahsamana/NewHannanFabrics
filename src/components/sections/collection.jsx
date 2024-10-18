@@ -1,34 +1,36 @@
 "use client";
 
 import CollectionCard from "@/components/UI/collectionCard";
-import collection1 from '../../assets/images/productImages/Teal-Blue-1.jpg'
+import collection1 from '../../assets/images/productImages/heritage-1.jpg'
+import collection2 from '../../assets/images/productImages/shane-azwan-1.jpg'
+import collection3 from '../../assets/images/productImages/heritage-2.jpg'
 
 const Collection = () => {
     const collections = [{
-        id: 1,
+        _id: 1,
         title: "Heritage",
         alt: "Heritage",
         image: collection1.src,
         link: "/collection/heritage",
       },
       {
-        id: 2,
+        _id: 2,
         title: "Shane Azwan",
         alt: "Shane Azwan",
-        image: collection1.src,
+        image: collection2.src,
         link: "/collection/shane-azwan",
       }, {
-        id: 3,
+        _id: 3,
         title: "Heritage",
         alt: "Heritage",
-        image: collection1.src,
+        image: collection3.src,
         link: "/collection/heritage",
       }
       ]
   return (
     <div className="grid grid-cols-3 max-[700px]:grid-cols-1 gap-5 m-6">
-      {collections.map((collection) => (
-        <CollectionCard key={collection.id} collection={collection} />
+      {collections?.map((collection) => (
+        <CollectionCard key={collection._id} collection={collection} />
       ))}
     </div>
   );

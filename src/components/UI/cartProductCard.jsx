@@ -5,18 +5,21 @@ import { useDispatch } from "react-redux";
 import { addCartData, deleteCartData } from "@/Redux/CartData/cartDataSlice";
 
 const CartProductCard = ({ product }) => {
+  console.log(product);
+  
   const dispatch = useDispatch();
   const quantity = product?.quantity || 1;
 
   const incrementQuantity = () => {
     if (product?._id) {
-      dispatch(addCartData({ id: product?._id, quantity: 1 }));
+      console.log(product._id)
+      dispatch(addCartData({ _id: product?._id, quantity: 1 }));
     }
   };
 
   const decrementQuantity = () => {
     if (quantity > 1 && product?._id) {
-      dispatch(addCartData({ id: product?._id, quantity: -1 }));
+      dispatch(addCartData({ _id: product?._id, quantity: -1 }));
     }
   };
 
@@ -24,7 +27,7 @@ const CartProductCard = ({ product }) => {
     <div className="flex items-start  border-t border-[#dbdbdb] max-[750px]:flex-wrap max-[750px]:items-center  py-8 px-4">
       <div className="flex w-1/2  max-[750px]:w-full">
         <img
-          src={product?.imagesUrl[0]}
+          src={product?.images[0]}
           alt="Product"
           className="w-30 h-32 object-cover "
         />
@@ -32,7 +35,7 @@ const CartProductCard = ({ product }) => {
           <h3 className="text-xs text-gray-700 uppercase">HANNAN FABRICS</h3>
           <p className="text-[15px] mt-2 font-semibold text-gray-800">
             {product?.name}
-          </p>
+          </p> 
           <p className="text-gray-500 text-sm">
             Rs. {product?.discountedPrice.toFixed(2)}
           </p>

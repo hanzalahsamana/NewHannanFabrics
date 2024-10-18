@@ -7,7 +7,7 @@ const ProductsRecipt = ({products}) => {
     <div className='w-full max-w-[500px] bg-[#F5F5F5]' >
       <div>
         {products?.map((item , index)=>(
-          <ProductRecieptCard key={item.id} product={item}/>
+          <ProductRecieptCard key={item._id} product={item}/>
         ))}
       </div>
     </div>

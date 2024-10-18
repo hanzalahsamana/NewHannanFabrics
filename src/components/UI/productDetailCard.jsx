@@ -56,13 +56,13 @@ const ProductDetailCard = ({ product }) => {
           <div className={styles.reviews}>
             <p>
               <span>
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+                <FaStar className="text-[orange]" />
+                <FaStar className="text-[orange]" />
+                <FaStar className="text-[orange]" />
+                <FaStar className="text-[orange]"/>
                 <FaStar />
               </span>{" "}
-              {Math.floor(Math.random() * 3) + 3} Review
+              4 Review
             </p>
           </div>
           <div className={styles.priceSection}>

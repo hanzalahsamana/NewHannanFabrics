@@ -6,7 +6,9 @@ import { setProductData, setLoading, setError } from '@/Redux/Products/productDa
 import { useRouter } from 'next/navigation';
 import ProductCard from '../UI/productCard';
 
-const ProductsSection = ({ maxLength, collection }) => {
+const ProductsSection = ({ maxLength, collection , name }) => {
+    console.log(collection);
+
     const dispatch = useDispatch();
     const router = useRouter()
     const { products, loading, error } = useSelector((state) => state.productData);
@@ -20,18 +22,21 @@ const ProductsSection = ({ maxLength, collection }) => {
     }
 
     return (
-        <div className="grid grid-cols-4 max-[1024px]:grid-cols-3 max-[750px]:grid-cols-2 max-[470px]:grid-cols-1 gap-2 m-6">
-            {products?.slice(0, maxLength).map((product) => (
-                (product.collectionName === collection || collection === "all") && (
-                    <div
-                        className="cursor-pointer"
-                        key={product._id}
-                        onClick={() => router.push(`products/${product._id}`)}
-                    >
-                        <ProductCard product={product} />
-                    </div>
-                )
-            ))}
+        <div className='max-w-[1500px]'>
+            <h1 className='m-6 text-[30px] font-semibold text-left'>{name}</h1>
+            <div className="grid grid-cols-4 max-[1024px]:grid-cols-3 max-[750px]:grid-cols-2 max-[470px]:grid-cols-1 gap-2 m-6">
+                {products?.slice(0, maxLength).map((product) => (
+                    (product?.collectionName?.toLowerCase() === collection || collection === "all") && (
+                        <div
+                            className="cursor-pointer"
+                            key={product._id}
+                            onClick={() => router.push(`products/${product._id}`)}
+                        >
+                            <ProductCard product={product} />
+                        </div>
+                    )
+                ))}
+            </div>
         </div>
     );
 };

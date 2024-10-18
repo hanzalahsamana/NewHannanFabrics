@@ -9,7 +9,7 @@ import { fetchProducts } from '@/Apis/FetchProducts'
 const Layout = ({ chidren }) => {
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(setCartData(JSON.parse(localStorage.getItem('cartDataa'))))
+        dispatch(setCartData(JSON.parse(localStorage.getItem('cartDataa')) || []))
         const getProducts = async () => {
             dispatch(setLoading(true));
             try {
@@ -25,11 +25,11 @@ const Layout = ({ chidren }) => {
           getProducts();
     }, [dispatch])
     return (
-        <>
+        <div className='flex flex-col items-center'>
             <Header />
             {chidren}
             <Footer />
-        </>
+        </div>
     )
 }
 

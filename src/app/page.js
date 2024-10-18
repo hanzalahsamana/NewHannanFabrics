@@ -12,14 +12,14 @@ import ProductsSection from "@/components/sections/productsSection";
 export default function Home() {
  
   return (
-    <>
+    <div className="max-w-[1500px]">
     <Hero/>
     <Collection/>
     <FabricsAbout/>
-    <ProductsSection maxLength={4} collection={'all'}/>
+    <ProductsSection maxLength={4} collection={'all'} name={"Best Sellers"}/>
     <CollectionAbout/>
     <FabricsLiberary/>
     <Contact/>
-    </>
+    </div>
   );
 }

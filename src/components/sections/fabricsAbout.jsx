@@ -1,6 +1,7 @@
 "use client";
 
 import "./style.css";
+import section1 from "@/assets/images/sectionImages/section1.webp";
 const FabricsAbout = () => {
   return (
     <div className="fabric-container">
@@ -16,8 +17,8 @@ const FabricsAbout = () => {
           </button>
         </div>
         <img
-          src="https://cdn.shopify.com/s/files/1/0889/9651/2017/files/bg2.jpg?v=1724235885"
-          alt=""
+          src={section1.src}
+          alt="DISCOVER OUR FABRIC REMNANTS"
         />
       </div>
     </div>

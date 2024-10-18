@@ -1,6 +1,8 @@
 "use client";
 
 import "./style.css";
+import section3 from "@/assets/images/sectionImages/section3.webp";
+
 const FabricsLiberary = () => {
   return (
     <div className="fabric-cutting-container py-[10px]">
@@ -25,7 +27,7 @@ const FabricsLiberary = () => {
           </p>
         </div>
         <img
-          src="https://cdn.shopify.com/s/files/1/0889/9651/2017/files/close-up-man-cutting-blue-fabric.jpg?v=1724236929"
+          src={section3.src}
           alt=""
         />
       </div>

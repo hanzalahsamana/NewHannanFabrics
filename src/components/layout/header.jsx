@@ -19,34 +19,34 @@ const Header = () => {
   const totalQuantity = cartData.reduce((accumulator, cartItem) => {
     return accumulator + (cartItem?.quantity || 0);
   }, 0);
-  useEffect(()=>{
+  useEffect(() => {
 
-    
-    window.addEventListener('scroll' ,()=>{
-      if(document.body.getBoundingClientRect().top < -430){
+
+    window.addEventListener('scroll', () => {
+      if (document.body.getBoundingClientRect().top < -430) {
         setIsScrolled(true)
-      }else{
+      } else {
         setIsScrolled(false)
       }
     })
-  
-    },[])
+
+  }, [])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <header className={`w-full transition-all duration-300 ease-in-out top-0 z-10 ${pathname === "/"?'fixed':'sticky'} ${pathname === "/" && !isScrolled ?'bg-gradient-to-b from-black to-transparent text-white':'bg-white text-black shadow-md ' } ${pathname === "/"&&'fixed'}`}>
+    <header className={`w-full transition-all duration-300 ease-in-out top-0 z-10 ${pathname === "/" ? 'fixed' : 'sticky'} ${pathname === "/" && !isScrolled && !isOpen ? 'bg-gradient-to-b from-black to-transparent text-white' : 'bg-white text-black shadow-md '} ${pathname === "/" && 'fixed'}`}>
       <div className="container mx-auto flex justify-between gap-10 items-center max-w-[1200px] py-4 px-[20px] md:px-[40px]">
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu}>
             {isOpen ? <AiOutlineClose size={24} /> : <FaBars size={24} />}
           </button>
         </div>
-        <div className="flex items-center">
+        <Link href={'/'} className="flex items-center">
           <img src={logo.src} alt="Hannan Fabrics Logo" className="w-20" />
-        </div>
+        </Link>
 
         <nav className="hidden md:flex gap-3 space-x-4">
           <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} href="/" prefetch={true}>
@@ -78,34 +78,42 @@ const Header = () => {
       </div>
 
       <div className={`max-w-[1500px] md:hidden transition-all duration-3000 ease-in-out ${isOpen ? 'max-h-[260px]' : 'max-h-[0px] overflow-hidden'}`}>
-        <nav className="flex flex-col gap-6 p-[30px] bg-white py-4">
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/")
-            toggleMenu()
-          }}>
-            Home
-          </p>
-          <Link href={"/collection/heritage"} prefetch={true}>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={()=> {
-            toggleMenu()
-          }}>
-            Heritage
-          </p>
+        <nav className="flex flex-col gap-6 p-[30px] py-4">
+          <Link href={"/"} prefetch={true}>
+            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} onClick={() => {
+              toggleMenu()
+            }}>
+              Home
+            </p>
           </Link>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/collection/shane-azwan")
-            toggleMenu()
-          }}>
-            Shane Azwan
-          </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/products")
-            toggleMenu()
-          }}>
-            Products
-          </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/contact")
-            toggleMenu()
-          }}>
-            Contact
-          </p>
+          <Link href={"/collection/heritage"} prefetch={true}>
+            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={() => {
+              toggleMenu()
+            }}>
+              Heritage
+            </p>
+          </Link>
+          <Link href={"/collection/shane-azwan"} prefetch={true}>
+            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={() => {
+              toggleMenu()
+            }}>
+              Shane Azwan
+            </p>
+          </Link>
+          <Link href={"/products"} prefetch={true}>
+            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} onClick={() => {
+              toggleMenu()
+            }}>
+              Products
+            </p>
+          </Link >
+          <Link href={"/contact"} prefetch={true}>
+            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} onClick={() => {
+              toggleMenu()
+            }}>
+              Contact
+            </p>
+          </Link>
         </nav>
       </div>
 

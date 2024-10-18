@@ -1,15 +1,18 @@
 "use client";
+import Link from 'next/link';
 import Logo from '../../assets/images/logos/logo.webp';
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bg-[#21222A] py-10 px-10 text-white">
+    <div className="bg-[#21222A] py-10 px-10 text-white w-full max-w-[1500px]">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm px-4 md:px-0">
         {/* Logo and Contact Info */}
         <div>
+          <Link href={'/'}>
           <img src={Logo.src} alt="Hannan Fabrics Logo" className="mb-4" />
+          </Link>
           <p>Call Us at:</p>
           <p className="font-bold">+92 313 2148056</p>
           <p className="mt-4">For Business Queries:</p>
@@ -29,13 +32,13 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-4">ORDER INFO</h4>
           <ul>
-            <li className="mb-2"><a href="#">RETURN POLICY</a></li>
-            <li className="mb-2"><a href="#">PRIVACY POLICY</a></li>
-            <li className="mb-2"><a href="#">TERMS OF SERVICE</a></li>
-            <li className="mb-2"><a href="#">SHIPPING POLICY</a></li>
-            <li className="mb-2"><a href="#">ABOUT US</a></li>
-            <li className="mb-2"><a href="#">FAQs</a></li>
-            <li><a href="#">CONTACT US</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/">RETURN POLICY</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/">PRIVACY POLICY</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/">TERMS OF SERVICE</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/">SHIPPING POLICY</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/">ABOUT US</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/">FAQs</a></li>
+            <li><a href="/contact">CONTACT US</a></li>
           </ul>
         </div>
 
@@ -43,9 +46,9 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-4">SHOP</h4>
           <ul>
-            <li className="mb-2"><a href="#">SHAN-E-AZWAAN</a></li>
-            <li className="mb-2"><a href="#">HERITAGE</a></li>
-            <li><a href="#">ALL PRODUCTS</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/collection/shane-azwan">SHAN-E-AZWAAN</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/collection/heritage">HERITAGE</a></li>
+            <li><a href="/products">ALL PRODUCTS</a></li>
           </ul>
         </div>
 

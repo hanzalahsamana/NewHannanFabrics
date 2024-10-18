@@ -1,6 +1,8 @@
 "use client";
 
 import "./style.css";
+import section2 from "@/assets/images/sectionImages/section2.webp";
+
 const CollectionAbout = () => {
   return (
     <div className="febric-category">
@@ -11,7 +13,7 @@ const CollectionAbout = () => {
           data-aos-easing="linear"
           data-aos-duration="1000"
         >
-          <img src="https://cdn.shopify.com/s/files/1/0889/9651/2017/files/Dark-Blue-1.jpg?v=1724167693" />
+          <img src={section2.src} />
         </div>
       </div>
       <div className="text-wrap">

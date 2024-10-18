@@ -13,8 +13,9 @@ const Collection = ({ params }) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  
   return (
-    <ProductsSection collection={params?.collecton} maxLength={Infinity} />
+    <ProductsSection collection={params?.collection} maxLength={Infinity} />
   )
 }
 
