@@ -15,7 +15,7 @@ export const cartDataSlice = createSlice({
     },
 
     addCartData: (state, action) => {
-      const itemIndex = state.findIndex(item => item.id === action.payload.id);
+      const itemIndex = state?.findIndex(item => item.id === action.payload.id);
       if (itemIndex === -1) {
         state.push(action.payload);
       } else {
@@ -32,7 +32,7 @@ export const cartDataSlice = createSlice({
       return updatedState;
     },
     clearCartData: (state) => {
-      localStorage.setItem('cartDataa', null);
+      localStorage.setItem('cartDataa', JSON.stringify(initialState) );
       return initialState;
     }
   },

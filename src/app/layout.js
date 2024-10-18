@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/layout/layout";
+import { useEffect } from "react";
 
 const geistSans = localFont({
   src: "../assets/fonts/GeistVF.woff",
@@ -19,6 +20,10 @@ const geistMono = localFont({
 });
 
 const RootLayout = ({ children }) => {
+  useEffect(()=>{
+    console.log("////////////////////////////");
+    
+  },[])
   return (
     <Provider store={store}>
       <html lang="en">

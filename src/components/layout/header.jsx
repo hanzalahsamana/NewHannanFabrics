@@ -49,21 +49,21 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex gap-3 space-x-4">
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/")}>
+          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/' ? 'underline font-semibold' : ''}`} href="/" prefetch={true}>
             Home
-          </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/collection/heritage")}>
+          </Link>
+          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} href="/collection/heritage" prefetch={true}>
             Heritage
-          </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/collection/shane-azwan")}>
+          </Link>
+          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} href='/collection/shane-azwan' prefetch={true}>
             Shane Azwan
-          </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/products")}>
+          </Link>
+          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} href="/products" prefetch={true}>
             Products
-          </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} onClick={()=> router.push("/contact")}>
+          </Link>
+          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/contact' ? 'underline font-semibold' : ''}`} href="/contact" prefetch={true}>
             Contact
-          </p>
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4 text-[24px]">
@@ -84,11 +84,13 @@ const Header = () => {
           }}>
             Home
           </p>
-          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/collection/heritage")
+          <Link href={"/collection/heritage"} prefetch={true}>
+          <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} onClick={()=> {
             toggleMenu()
           }}>
             Heritage
           </p>
+          </Link>
           <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={()=> {router.push("/collection/shane-azwan")
             toggleMenu()
           }}>

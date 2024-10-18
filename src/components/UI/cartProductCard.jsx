@@ -9,14 +9,14 @@ const CartProductCard = ({ product }) => {
   const quantity = product?.quantity || 1;
 
   const incrementQuantity = () => {
-    if (product?.id) {
-      dispatch(addCartData({ id: product?.id, quantity: 1 }));
+    if (product?._id) {
+      dispatch(addCartData({ id: product?._id, quantity: 1 }));
     }
   };
 
   const decrementQuantity = () => {
-    if (quantity > 1 && product?.id) {
-      dispatch(addCartData({ id: product?.id, quantity: -1 }));
+    if (quantity > 1 && product?._id) {
+      dispatch(addCartData({ id: product?._id, quantity: -1 }));
     }
   };
 
@@ -57,7 +57,7 @@ const CartProductCard = ({ product }) => {
 
         <button
           className="ml-4 text-gray-600 hover:text-red-500"
-          onClick={()=>dispatch(deleteCartData(product?.id))}
+          onClick={()=>dispatch(deleteCartData(product?._id))}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

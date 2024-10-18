@@ -19,7 +19,7 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
     address: "",
     appartment: "",
     city: "",
-    postalCode: "",
+    postalCode: "",   
     phone: "",
   });
 
@@ -30,9 +30,6 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
   };
   
   const validateForm = () => {
-    debugger;
-    dispatch(clearCartData())
-    console.log("ok");
     const newErrors = {};
     const { email, country, firstName, lastName, address, city, phone } =
       formData;

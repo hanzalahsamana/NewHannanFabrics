@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { addCartData } from "@/Redux/CartData/cartDataSlice";
 import { TbTruckDelivery } from "react-icons/tb";
 import QuantityControl from "./QuantityControl";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const ProductDetailCard = ({ product }) => {
@@ -34,29 +33,20 @@ const ProductDetailCard = ({ product }) => {
       <div className={`max-[900px]:flex-col ${styles.productSection}`}>
         <div className={styles.productImages}>
           <img
-            src={product.imagesUrl[mainImage]}
+            src={product.images[mainImage]}
             alt="Fabric"
             className={`max-[900px]:max-w-full max-w-[450px] ${styles.mainImage}`}
           />
           <div className={styles.thumbnailContainer}>
-            <img
-              src={product.imagesUrl[0]}
-              onClick={() => setmainImage(0)}
-              alt="thumbnail 1"
-              className={styles.thumbnail}
-            />
-            <img
-              src={product.imagesUrl[1]}
-              onClick={() => setmainImage(1)}
-              alt="thumbnail 2"
-              className={styles.thumbnail}
-            />
-            <img
-              src={product.imagesUrl[2]}
-              onClick={() => setmainImage(2)}
-              alt="thumbnail 3"
-              className={styles.thumbnail}
-            />
+            {product.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                onClick={() => setmainImage(index)}
+                alt={`thumbnail ${index + 1}`}
+                className={styles.thumbnail}
+              />
+            ))}
           </div>
         </div>
 
@@ -72,24 +62,24 @@ const ProductDetailCard = ({ product }) => {
                 <FaStar />
                 <FaStar />
               </span>{" "}
-              {product.reviews} Review
+              {Math.floor(Math.random() * 3) + 3} Review
             </p>
           </div>
           <div className={styles.priceSection}>
             <span className={styles.strikeThrough}>
-              Rs {product.originalPrice.toFixed(2)} PKR
+              Rs {product?.originalPrice.toFixed(2)} PKR
             </span>
             <span className={styles.discountedPrice}>
-              Rs {product.discountedPrice.toFixed(2)} PKR
+              Rs {product?.discountedPrice.toFixed(2)} PKR
             </span>
-            <span className={styles.discountTag}>{product.discount}</span>
+            <span className={styles.discountTag}>{product?.discount}% OFF</span>
           </div>
           <p
             className={
-              product.status ? `${styles.InStock}` : `${styles.OutStock}`
+              product?.status ? `${styles.InStock}` : `${styles.OutStock}`
             }
           >
-            {product.status ? "In Stock" : "Out Of Stock"}
+            {product?.status ? "In Stock" : "Out Of Stock"}
           </p>
 
           <QuantityControl
@@ -100,10 +90,10 @@ const ProductDetailCard = ({ product }) => {
 
           <div className={styles.productDetail}>
             <p>
-              Type: <strong>{product.type}</strong>
+              Type: <strong>{product?.type}</strong>
             </p>
             <p>
-              Size: <strong>{product.size}</strong>
+              Size: <strong>{product?.size} meter</strong>
             </p>
           </div>
 
@@ -114,11 +104,11 @@ const ProductDetailCard = ({ product }) => {
             >
               Add To Cart
             </button>
-            <button onClick={() => {
+            <button prefetch={true} onClick={() => {
               handleAddToCart();
-              router.push('/checkout')
+              router.push("/checkout")
             }}
-               className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
+              className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
               Buy It Now
             </button>
           </div>

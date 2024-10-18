@@ -3,12 +3,27 @@ import Header from './header'
 import Footer from './footer'
 import { useDispatch } from 'react-redux'
 import { setCartData } from '@/Redux/CartData/cartDataSlice'
+import { setError, setLoading, setProductData } from '@/Redux/Products/productDataSlice'
+import { fetchProducts } from '@/Apis/FetchProducts'
 
 const Layout = ({ chidren }) => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(setCartData(JSON.parse(localStorage.getItem('cartDataa'))))
-    }, [])
+        const getProducts = async () => {
+            dispatch(setLoading(true));
+            try {
+              const data = await fetchProducts();
+              dispatch(setProductData(data));
+            } catch (err) {
+              dispatch(setError(err.message));
+            } finally {
+              dispatch(setLoading(false));
+            }
+          };
+      
+          getProducts();
+    }, [dispatch])
     return (
         <>
             <Header />

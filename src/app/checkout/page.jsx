@@ -2,9 +2,8 @@
 
 import PaymentForm from '@/components/UI/paymentForm'
 import ProductsRecipt from '@/components/UI/productsRecipt'
-import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import { useSelector } from 'react-redux'
@@ -13,9 +12,12 @@ const Checkout = () => {
   const router = useRouter()
   const [cartIsVisible, setCartIsVisible] = useState(false)
   const cartData = useSelector((state) => state.cartData);
-  if(!cartData || cartData?.length === 0){
-    router.push('/cart')
-  }
+  useEffect(()=>{
+
+    if(!cartData || cartData?.length === 0){
+      router.push('/cart')
+    }
+  },[cartData , router])
 
   const totalProductCost = cartData?.reduce((total, product) => {
     return total + (product.discountedPrice * product.quantity);
