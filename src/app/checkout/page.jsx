@@ -1,6 +1,6 @@
 "use client";
 
-import PaymentForm from '@/components/UI/paymentForm'
+import PaymentForm from '@/components/UI/PaymentForm'
 import ProductsRecipt from '@/components/UI/productsRecipt'
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
