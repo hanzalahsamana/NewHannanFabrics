@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import "./style.css";
 import section2 from "@/assets/images/sectionImages/section2.webp";
 
@@ -27,9 +28,9 @@ const CollectionAbout = () => {
           collection reflects the essence of tradition combined with modern
           style.
         </p>
-        <button className="py-[15px] w-full mt-6 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
-            Shop Now
-          </button>
+        <Link href={'/products'} className="flex justify-center py-[15px] w-full mt-6 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
+          Shop Now
+        </Link>
       </div>
     </div>
   );

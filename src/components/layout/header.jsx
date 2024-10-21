@@ -14,9 +14,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
-  const router = useRouter()
-  const cartData = useSelector((state) => state?.cartData || [])
-  const totalQuantity = cartData.reduce((accumulator, cartItem) => {
+  const { cartData, loading, error }  = useSelector((state) => state?.cartData || [])
+  console.log(cartData , '📒📒');
+  
+
+  const totalQuantity = cartData?.reduce((accumulator, cartItem) => {
     return accumulator + (cartItem?.quantity || 0);
   }, 0);
   useEffect(() => {
@@ -56,7 +58,7 @@ const Header = () => {
             Heritage
           </Link>
           <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} href='/collection/shane-azwan' prefetch={true}>
-            Shane Azwan
+            Shan-e-Azwaan
           </Link>
           <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} href="/products" prefetch={true}>
             Products
@@ -97,7 +99,7 @@ const Header = () => {
             <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={() => {
               toggleMenu()
             }}>
-              Shane Azwan
+              Shan-e-Azwaan
             </p>
           </Link>
           <Link href={"/products"} prefetch={true}>

@@ -5,14 +5,11 @@ import { useDispatch } from "react-redux";
 import { addCartData, deleteCartData } from "@/Redux/CartData/cartDataSlice";
 
 const CartProductCard = ({ product }) => {
-  console.log(product);
-  
   const dispatch = useDispatch();
   const quantity = product?.quantity || 1;
 
   const incrementQuantity = () => {
     if (product?._id) {
-      console.log(product._id)
       dispatch(addCartData({ _id: product?._id, quantity: 1 }));
     }
   };

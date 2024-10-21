@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 import CartTotalCard from "@/components/UI/cartTotalCard";
 
 const Cart = () => {
-  const cartData = useSelector((state) => state?.cartData || []);
+  const  { cartData, loading, error }  = useSelector((state) => state?.cartData || []);
 
-  const totalPrice = cartData.reduce((accumulator, cartItem) => {
+  const totalPrice = cartData?.reduce((accumulator, cartItem) => {
     return accumulator + (cartItem.discountedPrice * cartItem.quantity)
   }, 0);
-  console.log(totalPrice);
   
   return (
     <div className="flex items-center flex-col">
@@ -24,7 +23,7 @@ const Cart = () => {
             </div>
             <div>
               {cartData?.map((product) => (
-                <CartProductCard key={product.id} product={product} />
+                <CartProductCard key={product._id} product={product} />
               ))}
             </div>
             <div>

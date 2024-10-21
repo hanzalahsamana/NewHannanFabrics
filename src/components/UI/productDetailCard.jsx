@@ -33,7 +33,7 @@ const ProductDetailCard = ({ product }) => {
       <div className={`max-[900px]:flex-col ${styles.productSection}`}>
         <div className={styles.productImages}>
           <img
-            src={product.images[mainImage]}
+            src={product?.images[mainImage]}
             alt="Fabric"
             className={`max-[900px]:max-w-full max-w-[450px] ${styles.mainImage}`}
           />

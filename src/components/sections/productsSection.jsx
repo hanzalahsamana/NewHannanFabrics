@@ -1,25 +1,20 @@
 "use client";
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '@/Apis/FetchProducts';
-import { setProductData, setLoading, setError } from '@/Redux/Products/productDataSlice';
-import { useRouter } from 'next/navigation';
+import { useSelector } from 'react-redux';
 import ProductCard from '../UI/productCard';
 import Link from 'next/link';
+import Loader from '../UI/loader';
 
-const ProductsSection = ({ maxLength, collection , name }) => {
-    console.log(collection);
-
-    const dispatch = useDispatch();
-    const router = useRouter()
+const ProductsSection = ({ maxLength, collection, name }) => {
     const { products, loading, error } = useSelector((state) => state.productData);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return (
+            <Loader />
+        );
     }
 
     return (

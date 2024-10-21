@@ -103,11 +103,9 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
         "jpZOa3MoTD5kfqqO9"
       )
       .then((response) => {
-        console.log(data);
         toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
         dispatch(clearCartData())
         
-        console.log("Email sent successfully!", response);
         setFormData({
             email:'',
           country: "",
@@ -122,7 +120,7 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
         setErrors({});
       })
       .catch((err) => {
-        console.error("Error sending email:", err);
+        toast.error("Error sending email:", err)
       });
   };
 

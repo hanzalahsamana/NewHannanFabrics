@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import "./style.css";
 import section1 from "@/assets/images/sectionImages/section1.webp";
 const FabricsAbout = () => {
@@ -12,9 +13,9 @@ const FabricsAbout = () => {
             Choose from an impressive range of fabric remnants available at
             affordable prices.
           </p>
-          <button className="py-[15px] w-full mt-6 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
+          <Link href={'/products'} className="flex justify-center py-[15px] w-full mt-6 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
             Shop Now
-          </button>
+          </Link>
         </div>
         <img
           src={section1.src}

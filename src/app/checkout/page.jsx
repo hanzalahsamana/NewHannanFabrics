@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 const Checkout = () => {
   const router = useRouter()
   const [cartIsVisible, setCartIsVisible] = useState(false)
-  const cartData = useSelector((state) => state.cartData);
+  const   { cartData, loading, error }  = useSelector((state) => state?.cartData);
   useEffect(()=>{
 
     if(!cartData || cartData?.length === 0){
