@@ -6,12 +6,12 @@ import {
   addCartDataApi,
   deleteCartDataApi,
 } from "@/Apis/CartRefrenceApis";
-import { toast } from "react-toastify";
 
 const initialState = {
   cartData: [],
   loading: false,
-  error: null,
+  initialLoading:false,
+  error: null,  
 };
 
 export const setCartData = createAsyncThunk(
@@ -66,15 +66,15 @@ export const cartDataSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(setCartData.pending, (state) => {
-        state.loading = true;
+        state.initialLoading = true;
         state.error = null;
       })
       .addCase(setCartData.fulfilled, (state, action) => {
         state.cartData = action.payload;
-        state.loading = false;
+        state.initialLoading = false;
       })
       .addCase(setCartData.rejected, (state, action) => {
-        state.loading = false;
+        state.initialLoading = false;
         state.error = action.payload;
       })
       .addCase(addCartData.pending, (state) => {

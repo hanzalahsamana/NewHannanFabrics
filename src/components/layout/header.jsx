@@ -15,9 +15,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname()
   const { cartData, loading, error }  = useSelector((state) => state?.cartData || [])
-  console.log(cartData , '📒📒');
-  
-
   const totalQuantity = cartData?.reduce((accumulator, cartItem) => {
     return accumulator + (cartItem?.quantity || 0);
   }, 0);

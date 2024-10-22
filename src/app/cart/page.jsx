@@ -3,9 +3,20 @@ import EmptyCart from "@/components/sections/emptyCart";
 import CartProductCard from "@/components/UI/cartProductCard";
 import { useSelector } from "react-redux";
 import CartTotalCard from "@/components/UI/cartTotalCard";
+import Loader from "@/components/UI/loader";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const  { cartData, loading, error }  = useSelector((state) => state?.cartData || []);
+  const  { cartData, initialLoading }  = useSelector((state) => state?.cartData || []);
+  const [loading , setLoading] = useState(true)
+  useEffect(()=>{
+    setLoading(false)
+  })
+  if(initialLoading || loading){
+    return(
+      <Loader/>
+    )
+  }
 
   const totalPrice = cartData?.reduce((accumulator, cartItem) => {
     return accumulator + (cartItem.discountedPrice * cartItem.quantity)

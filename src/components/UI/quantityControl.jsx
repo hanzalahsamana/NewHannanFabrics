@@ -15,7 +15,7 @@ const QuantityControl = ({ quantity, increaseQuantity, decreaseQuantity }) => {
         -
       </button>
       <span className="h-8 flex justify-center my-[6px] items-center text-xl w-1/2 border-l border-r border-gray-500">
-        {loading ? <ButtonLoader /> : quantity}
+        { quantity}
 
       </span>
       <button
