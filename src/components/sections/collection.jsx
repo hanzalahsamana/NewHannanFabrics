@@ -18,7 +18,7 @@ const Collection = () => {
         title: "Shan-e-Azwaan",
         alt: "Shan-e-Azwaan",
         image: collection2.src,
-        link: "/collection/shane-azwan",
+        link: "/collection/shan-e-azwaan",
       }, {
         _id: 3,
         title: "Heritage",

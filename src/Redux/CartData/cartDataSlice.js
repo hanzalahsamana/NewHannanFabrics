@@ -48,7 +48,9 @@ export const deleteCartData = createAsyncThunk(
     try {
       const cartID = localStorage.getItem("cartId");
        const updatedState = await deleteCartDataApi(cartID , productId);
-      return updatedState;
+       console.log(updatedState);
+       
+      return updatedState.products;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -58,11 +60,6 @@ export const deleteCartData = createAsyncThunk(
 export const cartDataSlice = createSlice({
   name: "cartData",
   initialState,
-  reducers: {
-    clearCartData: (state) => {
-      state.cartData = [];
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(setCartData.pending, (state) => {
@@ -94,9 +91,7 @@ export const cartDataSlice = createSlice({
         state.error = null;
       })
       .addCase(deleteCartData.fulfilled, (state, action) => {
-        state.cartData = state.cartData.filter(
-          (item) => item._id !== action.payload
-        );
+        state.cartData = action.payload
         state.loading = false;
       })
       .addCase(deleteCartData.rejected, (state, action) => {

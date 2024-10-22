@@ -54,7 +54,7 @@ const Header = () => {
           <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/heritage' ? 'underline font-semibold' : ''}`} href="/collection/heritage" prefetch={true}>
             Heritage
           </Link>
-          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} href='/collection/shane-azwan' prefetch={true}>
+          <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shan-e-azwaan' ? 'underline font-semibold' : ''}`} href='/collection/shan-e-azwaan' prefetch={true}>
             Shan-e-Azwaan
           </Link>
           <Link className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/products' ? 'underline font-semibold' : ''}`} href="/products" prefetch={true}>
@@ -92,8 +92,8 @@ const Header = () => {
               Heritage
             </p>
           </Link>
-          <Link href={"/collection/shane-azwan"} prefetch={true}>
-            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shane-azwan' ? 'underline font-semibold' : ''}`} onClick={() => {
+          <Link href={"/collection/shan-e-azwaan"} prefetch={true}>
+            <p className={`text-[18px] cursor-pointer hover:opacity-[0.6] ${pathname === '/collection/shan-e-azwaan' ? 'underline font-semibold' : ''}`} onClick={() => {
               toggleMenu()
             }}>
               Shan-e-Azwaan

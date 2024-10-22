@@ -5,7 +5,7 @@ import emailjs from "emailjs-com";
 import FormInput from "./formInput";
 import { Input } from "postcss";
 import { toast } from "react-toastify";
-import { clearCartData } from "@/Redux/CartData/cartDataSlice";
+import { clearCartData, deleteCartData } from "@/Redux/CartData/cartDataSlice";
 import { useDispatch } from "react-redux";
 
 const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
@@ -104,7 +104,8 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
       )
       .then((response) => {
         toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
-        dispatch(clearCartData())
+        dispatch(deleteCartData())
+        localStorage.setItem('cartId', null)
         
         setFormData({
             email:'',

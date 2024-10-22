@@ -4,17 +4,20 @@ import React from "react";
 import styles from "./style.module.css";
 import { FaStar } from "react-icons/fa";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCartData } from "@/Redux/CartData/cartDataSlice";
 import { TbTruckDelivery } from "react-icons/tb";
 import QuantityControl from "./quantityControl";
 import { useRouter } from "next/navigation";
+import ButtonLoader from "./buttonLoader";
 
 const ProductDetailCard = ({ product }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setmainImage] = useState(0);
+  const  { loading  }  = useSelector((state) => state?.cartData || []);
+
 
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -26,6 +29,7 @@ const ProductDetailCard = ({ product }) => {
 
   const handleAddToCart = () => {
     dispatch(addCartData({ quantity: quantity, ...product }));
+    setQuantity(1)
   };
 
   return (
@@ -102,13 +106,13 @@ const ProductDetailCard = ({ product }) => {
               onClick={handleAddToCart}
               className="py-[15px] w-full mt-3 bg-white border-black border-[2px] text-[#000000] text-[16px]  transition-all duration-300 hover:scale-105"
             >
-              Add To Cart
+              {loading?<ButtonLoader/>: 'Add To Cart'}
             </button>
-            <button prefetch={true} onClick={() => {
+            <button onClick={() => {
               handleAddToCart();
               router.push("/checkout")
             }}
-              className="py-[15px] w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
+              className="py-[15px] overflow-hidden w-full mt-3 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
               Buy It Now
             </button>
           </div>

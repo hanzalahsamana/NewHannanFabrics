@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from '@/components/UI/loader';
 import PaymentForm from '@/components/UI/PaymentForm'
 import ProductsRecipt from '@/components/UI/productsRecipt'
 import { useRouter } from 'next/navigation';
@@ -11,13 +12,24 @@ import { useSelector } from 'react-redux'
 const Checkout = () => {
   const router = useRouter()
   const [cartIsVisible, setCartIsVisible] = useState(false)
-  const   { cartData, loading, error }  = useSelector((state) => state?.cartData);
+  const   { cartData,initialLoading }  = useSelector((state) => state?.cartData);
+  const [loading , setLoading] = useState(true)
+  useEffect(()=>{
+  })
+  
   useEffect(()=>{
 
     if(!cartData || cartData?.length === 0){
       router.push('/cart')
     }
+    setLoading(false)
+
   },[cartData , router])
+  if(initialLoading || loading){
+    return(
+      <Loader/>
+    )
+  }
 
   const totalProductCost = cartData?.reduce((total, product) => {
     return total + (product.discountedPrice * product.quantity);
