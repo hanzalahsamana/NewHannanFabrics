@@ -8,21 +8,23 @@ const ProductsSection = ({ maxLength, collection, name }) => {
     const { products, loading, error } = useSelector((state) => state.productData);
 
     if (loading) {
-        return <Loader/>;
+        return <Loader />;
     }
 
     if (error) {
         return (
-            <Loader />
+            <p>{error}</p>
         );
     }
 
     return (
         <div className='max-w-[1500px]'>
-            <h1 className='m-6 text-[30px] font-semibold text-left'>{name}</h1>
+            <h1 className='m-6 text-[30px] font-semibold text-center'>{name}</h1>
             <div className="grid grid-cols-4 max-[1024px]:grid-cols-3 max-[750px]:grid-cols-2 max-[470px]:grid-cols-1 gap-2 m-6">
-                {products?.slice(0, maxLength).map((product) => (
-                    (product?.collectionName?.toLowerCase() === collection || collection === "all") && (
+                {products
+                    ?.filter(product => product?.collectionName?.toLowerCase() === collection.toLowerCase() || collection === "all")
+                    .slice(0, maxLength)
+                    .map((product) => (
                         <Link
                             className="cursor-pointer"
                             key={product._id}
@@ -30,8 +32,9 @@ const ProductsSection = ({ maxLength, collection, name }) => {
                         >
                             <ProductCard product={product} />
                         </Link>
-                    )
-                ))}
+                    ))
+                }
+
             </div>
         </div>
     );

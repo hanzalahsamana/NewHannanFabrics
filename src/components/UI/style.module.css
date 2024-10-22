@@ -173,3 +173,24 @@
 .ProductCardContainer:hover img {
     scale: 1.04;
 }
+
+.starRatingContainer {
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .starEmpty {
+    font-size: 20px;
+    color: #4d4d4d;
+  }
+  
+  .starFilled {
+    font-size: 20px;
+    color: #f5a700 !important;
+  }
+  
+  .starRatingContainer span:hover,
+  .starRatingContainer span:hover ~ span {
+    color: #b3763aac;
+  }
+  

@@ -5,7 +5,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 const Collection = ({ params }) => {
-  const { products, loading, error } = useSelector((state) => state.productData);
+  const { loading, error } = useSelector((state) => state.productData);
 
   if (loading) {
     return <Loader/>;
@@ -14,9 +14,12 @@ const Collection = ({ params }) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
   
   return (
-    <ProductsSection collection={params?.collection} maxLength={Infinity} />
+    <ProductsSection collection={params?.collection} maxLength={Infinity} name={capitalizeFirstLetter(params?.collection)} />
   )
 }
 

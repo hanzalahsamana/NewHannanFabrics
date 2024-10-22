@@ -40,7 +40,7 @@ const CartProductCard = ({ product }) => {
           <p className="text-gray-500 text-sm">Size: {product?.size}</p>
         </div>
       </div>
-      <div className="w-1/4 max-[750px]:w-1/2 mt-[15px]">
+      <div className="w-1/4 max-[750px]:w-1/2 mt-[15px] mx-[10px]">
         <QuantityControl
           quantity={quantity}
           increaseQuantity={incrementQuantity}
