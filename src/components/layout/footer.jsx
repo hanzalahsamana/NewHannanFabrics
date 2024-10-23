@@ -18,7 +18,6 @@ const Footer = () => {
           <p className="mt-4">For Business Queries:</p>
           <p className="font-bold">info.hannanfabrics@gmail.com</p>
           <div className="flex mt-4 space-x-4">
-            {/* Social Media Icons */}
             <a href="#" target="_blank" rel="noopener noreferrer">
               <FaInstagram className="w-6 h-6" />
             </a>
@@ -28,21 +27,19 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Order Info */}
         <div>
           <h4 className="font-bold mb-4">ORDER INFO</h4>
           <ul>
-            <li className="mb-2 hover:opacity-[0.7]"><a href="/">RETURN POLICY</a></li>
-            <li className="mb-2 hover:opacity-[0.7]"><a href="/">PRIVACY POLICY</a></li>
-            <li className="mb-2 hover:opacity-[0.7]"><a href="/">TERMS OF SERVICE</a></li>
-            <li className="mb-2 hover:opacity-[0.7]"><a href="/">SHIPPING POLICY</a></li>
-            <li className="mb-2 hover:opacity-[0.7]"><a href="/">ABOUT US</a></li>
-            <li className="mb-2 hover:opacity-[0.7]"><a href="/">FAQs</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/pages/return-policy">RETURN POLICY</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/pages/privacy-policy">PRIVACY POLICY</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/pages/terms-of-service">TERMS OF SERVICE</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/pages/shipping-policy">SHIPPING POLICY</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/pages/about-us">ABOUT US</a></li>
+            <li className="mb-2 hover:opacity-[0.7]"><a href="/pages/faqs">FAQs</a></li>
             <li><a href="/contact">CONTACT US</a></li>
           </ul>
         </div>
 
-        {/* Shop Links */}
         <div>
           <h4 className="font-bold mb-4">SHOP</h4>
           <ul>
@@ -52,7 +49,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Email Subscription */}
         <div>
           <h4 className="font-bold mb-4">Subscribe to our emails</h4>
           <div className="flex items-center border border-white rounded-md overflow-hidden">

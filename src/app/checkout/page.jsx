@@ -12,22 +12,22 @@ import { useSelector } from 'react-redux'
 const Checkout = () => {
   const router = useRouter()
   const [cartIsVisible, setCartIsVisible] = useState(false)
-  const   { cartData,initialLoading }  = useSelector((state) => state?.cartData);
-  const [loading , setLoading] = useState(true)
-  useEffect(()=>{
+  const { cartData, initialLoading } = useSelector((state) => state?.cartData);
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
   })
-  
-  useEffect(()=>{
 
-    if(!cartData || cartData?.length === 0){
+  useEffect(() => {
+
+    if (!cartData || cartData?.length === 0) {
       router.push('/cart')
     }
     setLoading(false)
 
-  },[cartData , router])
-  if(initialLoading || loading){
-    return(
-      <Loader/>
+  }, [cartData, router])
+  if (initialLoading || loading) {
+    return (
+      <Loader />
     )
   }
 
