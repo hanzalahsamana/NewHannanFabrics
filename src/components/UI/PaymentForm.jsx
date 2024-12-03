@@ -64,8 +64,10 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
       postalCode,
       phone,
     } = formData;
-    const extractedData = cartItem.map(({ name, quantity, discountedPrice }) => ({
+    const extractedData = cartItem.map(({ name, quantity, discountedPrice , _id , images }) => ({
       name,
+      _id,
+      image:images[0],
       quantity,
       totalOfProduct: discountedPrice * quantity,
     }));
@@ -101,12 +103,11 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
         "template_tfzxitb",
         data,
         "jpZOa3MoTD5kfqqO9"
-      );
+      );      
       await addOrderDataApi(data);
       toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
       dispatch(deleteCartData())
       localStorage.setItem('cartId', null)
-
       setFormData({
         email: '',
         country: "",

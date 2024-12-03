@@ -7,6 +7,7 @@ export const addOrderDataApi = async (orderDetail) => {
     const response = await axios.post(url, orderDetail);
     return response.data;
   } catch (error) {
+    console.log(error);
     throw new Error(error);
   }
 };
