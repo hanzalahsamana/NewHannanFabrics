@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import ProductCard from '../UI/productCard';
 import Link from 'next/link';
 import Loader from '../UI/loader';
+import { MdSignalWifiConnectedNoInternet2 } from "react-icons/md";
+
+
 
 const ProductsSection = ({ maxLength, collection, name }) => {
     const { products, loading, error } = useSelector((state) => state.productData);
@@ -13,7 +16,9 @@ const ProductsSection = ({ maxLength, collection, name }) => {
 
     if (error) {
         return (
-            <p>{error}</p>
+            <div className='flex gap-2 text-[25px] justify-center py-[40px] items-center '>
+                {error} <MdSignalWifiConnectedNoInternet2 />
+            </div>
         );
     }
 

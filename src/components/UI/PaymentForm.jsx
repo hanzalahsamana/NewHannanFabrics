@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { clearCartData, deleteCartData } from "@/Redux/CartData/cartDataSlice";
 import { useDispatch } from "react-redux";
 
-const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
+const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -19,16 +19,16 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
     address: "",
     appartment: "",
     city: "",
-    postalCode: "",   
+    postalCode: "",
     phone: "",
   });
 
   const handleChange = (e) => {
-    
+
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-  
+
   const validateForm = () => {
     const newErrors = {};
     const { email, country, firstName, lastName, address, city, phone } =
@@ -77,14 +77,14 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
         firstName,
         lastName,
         phone,
-        method:'COD',
+        method: 'COD',
         city,
         country,
         address,
         postalCode,
         appartment,
       },
-      orderData:extractedData,
+      orderData: extractedData,
       orderInfo: {
         tax: tax,
         shipping: shipping,
@@ -93,7 +93,7 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
       },
     };
 
-   
+
 
     emailjs
       .send(
@@ -105,10 +105,10 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
       .then((response) => {
         toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
         dispatch(deleteCartData())
-        localStorage.setItem('cartId', null)
-        
+        localStorage.removeItem('cartId')
+
         setFormData({
-            email:'',
+          email: '',
           country: "",
           firstName: "",
           lastName: "",
@@ -129,7 +129,7 @@ const PaymentForm = ({shipping , total ,tax , discount, cartItem}) => {
     <div className="w-full flex flex-col items-end max-[750px]:items-center py-[45px] px-[30px]">
       <div className="max-w-[500px] w-full">
         <form onSubmit={handleSubmit} className="flex flex-wrap">
-         
+
           <div className="w-full">
             <h2 className="text-[24px] font-medium mb-4">Payment</h2>
             <p className="text-gray-500 mb-4">

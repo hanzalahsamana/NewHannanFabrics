@@ -5,7 +5,8 @@ import { store } from "@/Redux/store";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "@/components/layout/layout";
+import NetworkStatus from "@/components/sections/NetworkError";
+import LayoutWithReduxState from "@/components/layout/layoutWithReduxState";
 
 const geistSans = localFont({
   src: "../assets/fonts/GeistVF.woff",
@@ -28,8 +29,9 @@ const RootLayout = ({ children }) => {
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           suppressHydrationWarning
         >
-          <Layout chidren={children} />
+          <LayoutWithReduxState children={children} />
           <ToastContainer />
+          <NetworkStatus />
         </body>
       </html>
     </Provider>
