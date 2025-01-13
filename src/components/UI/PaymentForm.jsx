@@ -96,7 +96,6 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
       },
     };
 
-
     try {
       await emailjs.send(
         "service_efmya6i",
@@ -107,7 +106,7 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
       await addOrderDataApi(data);
       toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
       dispatch(deleteCartData())
-      localStorage.setItem('cartId', null)
+      localStorage.removeItem('cartId')
       setFormData({
         email: '',
         country: "",

@@ -8,7 +8,7 @@ export const setCartDataApi = async (cartId) => {
     const response = await axios.get(`${BASE_URL}/getCartData?id=${cartId}`);
     return response.data[0];
   } catch (error) {
-    toast.error(error.message, "yeah Api file ka he");
+    toast.error(error.message , "wow");
   }
 };
 
@@ -28,18 +28,12 @@ export const addCartDataApi = async (productId, quantity , cartId) => {
 
 export const deleteCartDataApi = async (cartId, productId) => {
   try {
-    console.log(cartId);
-    
     let url = `${BASE_URL}/deleteCartProduct?id=${cartId}`;
 
     if (productId) {
-      console.log("::::::::::::", productId);
       url += `&&productId=${productId}`;
     }
     const response = await axios.delete(url);
-    console.log(response.data,"(●'◡'●)");
-    
-
     return response.data;
   } catch (error) {
     toast.error(error.message);

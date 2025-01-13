@@ -5,8 +5,9 @@ import { store } from "@/Redux/store";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "@/components/layout/layout";
 import Script from "next/script";
+import NetworkStatus from "@/components/sections/NetworkError";
+import LayoutWithReduxState from "@/components/layout/layoutWithReduxState";
 
 const geistSans = localFont({
   src: "../assets/fonts/GeistVF.woff",
@@ -50,8 +51,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               // style="display:none;visibility:hidden"
             ></iframe>
           </noscript>
-          <Layout chidren={children} />
+          <LayoutWithReduxState children={children} />
           <ToastContainer />
+          <NetworkStatus />
         </body>
       </html>
     </Provider>

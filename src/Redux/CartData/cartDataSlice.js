@@ -17,7 +17,9 @@ const initialState = {
 export const setCartData = createAsyncThunk(
   "cartData/setCartData",
   async (cartId, { rejectWithValue }) => {
-    if (cartId && cartId !== 'undefined') {
+    if (cartId && cartId !== 'undefined'&& cartId !== 'null') {
+      console.log("okkkkk" , cartId);
+      
       try {
         const response = await setCartDataApi(cartId);
         return response.products;
@@ -48,8 +50,6 @@ export const deleteCartData = createAsyncThunk(
     try {
       const cartID = localStorage.getItem("cartId");
        const updatedState = await deleteCartDataApi(cartID , productId);
-       console.log(updatedState);
-       
       return updatedState.products;
     } catch (error) {
       return rejectWithValue(error.message);
