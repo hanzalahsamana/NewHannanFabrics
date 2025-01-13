@@ -7,6 +7,7 @@ import { Input } from "postcss";
 import { toast } from "react-toastify";
 import { clearCartData, deleteCartData } from "@/Redux/CartData/cartDataSlice";
 import { useDispatch } from "react-redux";
+import { addOrderDataApi } from "@/Apis/PlaceOrder";
 
 const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
 
     e.preventDefault();
     if (!validateForm()) {
@@ -63,8 +64,10 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
       postalCode,
       phone,
     } = formData;
-    const extractedData = cartItem.map(({ name, quantity, discountedPrice }) => ({
+    const extractedData = cartItem.map(({ name, quantity, discountedPrice , _id , images }) => ({
       name,
+      _id,
+      image:images[0],
       quantity,
       totalOfProduct: discountedPrice * quantity,
     }));
@@ -93,36 +96,32 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
       },
     };
 
-
-
-    emailjs
-      .send(
+    try {
+      await emailjs.send(
         "service_efmya6i",
         "template_tfzxitb",
         data,
         "jpZOa3MoTD5kfqqO9"
-      )
-      .then((response) => {
-        toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
-        dispatch(deleteCartData())
-        localStorage.removeItem('cartId')
-
-        setFormData({
-          email: '',
-          country: "",
-          firstName: "",
-          lastName: "",
-          address: "",
-          appartment: "",
-          city: "",
-          postalCode: "",
-          phone: "",
-        });
-        setErrors({});
-      })
-      .catch((err) => {
-        toast.error("Error sending email:", err)
+      );      
+      await addOrderDataApi(data);
+      toast.success("Your order has confirmed and will deliverd in 2 to 3 working days")
+      dispatch(deleteCartData())
+      localStorage.removeItem('cartId')
+      setFormData({
+        email: '',
+        country: "",
+        firstName: "",
+        lastName: "",
+        address: "",
+        appartment: "",
+        city: "",
+        postalCode: "",
+        phone: "",
       });
+      setErrors({});
+    } catch (err) {
+      toast.error("Error sending email:", err)
+    }
   };
 
   return (
