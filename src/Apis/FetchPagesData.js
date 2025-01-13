@@ -9,7 +9,6 @@ export const fetchPagesContent = async (dispatch) => {
     const response = await axios.get(`${BASE_URL}/getPages`);
     dispatch(setPagesContent(response.data));
     console.log(response.data);
-    
     return response.data;
   } catch (error) {
     dispatch(setError(error.message));

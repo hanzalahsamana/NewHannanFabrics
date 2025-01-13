@@ -19,8 +19,9 @@ export default function Home() {
     <FabricsAbout/>
     <ProductsSection maxLength={4} collection={'all'} name={"Best Sellers"}/>
     <CollectionAbout/>
+    <ProductsSection maxLength={4} collection={'all'} name={"Discover More"}/>
     <FabricsLiberary/>
-    <AddReviews/>
+    {/* <AddReviews/> */}
     <Contact/>
     </div>
   );

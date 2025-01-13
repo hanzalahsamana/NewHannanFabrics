@@ -8,16 +8,19 @@ import { setCartData } from '@/Redux/CartData/cartDataSlice'
 import { fetchProducts } from '@/Apis/FetchProducts'
 import { fetchPagesContent } from '@/Apis/FetchPagesData'
 import Loader from '../UI/loader'
+import { fetchCategories } from '@/Apis/FetchCategories';
 
 const LayoutWithReduxState = ({ children }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.productData);
   const { pagesLoading } = useSelector((state) => state.pagesContent);
+  const { categoryLoading } = useSelector((state) => state.categories);
 
   useEffect(() => {
     const fetchData = async () => {
       await fetchProducts(dispatch);
       await fetchPagesContent(dispatch);
+      await fetchCategories(dispatch);
     };
     fetchData();
     if (typeof window !== "undefined") {
@@ -25,9 +28,12 @@ const LayoutWithReduxState = ({ children }) => {
     }
   }, [dispatch])
 
+  if (loading || pagesLoading || categoryLoading) {
+    return <Loader/>
+  }
+
   return (
     <div className='flex flex-col items-center'>
-      {loading || pagesLoading ? <Loader /> : ''}
       <Header />
       {children}
       <Footer />
