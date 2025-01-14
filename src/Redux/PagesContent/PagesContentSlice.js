@@ -24,6 +24,11 @@ export const pagesContentSlice = createSlice({
   },
 });
 
+export const selectPageByType = (state, pageType) =>{
+  return state.pagesContent?.pagesContent?.find((page) => page.type === pageType);
+}
+
 export const { setPagesContent, setLoading, setError } =
   pagesContentSlice.actions;
+
 export const pagesContentReducer = pagesContentSlice.reducer;

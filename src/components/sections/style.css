@@ -90,7 +90,6 @@
 .fabric-container .fabric-text-wrap {
   width: 35%;
   padding: 20px;
-  height: 15vw;
   min-height: 300px;
   background-color: white;
   position: absolute;
@@ -159,12 +158,12 @@
 .fabric-cutting-container h2 {
   margin: 5px 0px;
   font-weight: 700;
-  font-size: 3vw !important;
+  font-size: 40px !important;
 }
 
 .fabric-cutting-container p {
   margin: 5px 0px;
-  font-size: 1.2vw;
+  font-size: 18px;
 }
 
 @media (max-width: 800px) {

@@ -3,23 +3,28 @@
 import Link from "next/link";
 import "./style.css";
 import section1 from "@/assets/images/sectionImages/section1.webp";
+import { selectPageByType } from "@/Redux/PagesContent/PagesContentSlice";
+import { useSelector } from "react-redux";
 const FabricsAbout = () => {
+
+  const selectedPage = useSelector((state) =>
+    selectPageByType(state, "Fabric Remants")
+  );
+  
   return (
     <div className="fabric-container">
       <div className="fabric-img">
         <div className="fabric-text-wrap">
-          <h2 className="text-xl font-bold">DISCOVER OUR FABRIC REMNANTS</h2>
-          <p className="mt-4">
-            Choose from an impressive range of fabric remnants available at
-            affordable prices.
-          </p>
+          <h2 className="text-xl font-bold">{selectedPage?.title}</h2>
+          <div className="mt-4" dangerouslySetInnerHTML={{ __html: selectedPage?.text }}>
+          </div>
           <Link href={'/products'} className="flex justify-center py-[15px] w-full mt-6 bg-black text-[#e6e6e6] text-[16px]  transition-all duration-300 hover:scale-105">
-            Shop Now
+            {selectedPage?.buttonText}
           </Link>
         </div>
         <img
-          src={section1.src}
-          alt="DISCOVER OUR FABRIC REMNANTS"
+          src={selectedPage?.image}
+          alt={selectedPage?.title}
         />
       </div>
     </div>

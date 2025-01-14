@@ -1,11 +1,26 @@
+"use client";
+
+import { selectPageByType } from '@/Redux/PagesContent/PagesContentSlice';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const PrivacyPolicy = () => {
+
+  const selectedPage = useSelector((state) =>
+    selectPageByType(state, "Privacy Policy")
+);
+
   return (
     <div className="container max-w-[1500px] py-4 px-[3vw] max-[600px]:text-center">
-      <h1 className="text-4xl font-bold text-center mb-6">PRIVACY POLICY</h1>
+      <h1 className="text-4xl font-bold text-center mb-6">{selectedPage?.title}</h1>
       <div className="mx-auto">
-        <p className="text-lg leading-relaxed mb-6">
+
+        <div className="text-lg leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: selectedPage?.text }}>
+        </div>
+
+
+
+        {/* <p className="text-lg leading-relaxed mb-6">
           At Hannan Fabrics, we are committed to protecting your privacy and ensuring the security of any personal information you provide. This Privacy Policy outlines how we collect, use, and protect your information when you visit or make a purchase from our website.
         </p>
 
@@ -78,7 +93,10 @@ const PrivacyPolicy = () => {
         <ul className="list-none pl-0 text-lg">
           <li>Email: <a href="mailto:info.hannanfabrics@gmail.com" className="text-blue-500 underline">info.hannanfabrics@gmail.com</a></li>
           <li>Phone: +92 313 2148056</li>
-        </ul>
+        </ul> */}
+
+
+
       </div>
     </div>
   );
