@@ -33,7 +33,7 @@ const FAQ = () => {
         <div className="max-w-[1000px] mx-auto p-6">
             <h1 className="text-3xl font-bold text-center mb-8">FAQs</h1>
             {selectedPage?.faqs?.map((faq, index) => (
-                <div className="border-b border-gray-200 py-4 ">
+                <div key={index} className="border-b border-gray-200 py-4 ">
                     <button
                         onClick={() => setOpenIndex(openIndex === index ? null : index)}
                         className="w-full text-left flex justify-between items-center"

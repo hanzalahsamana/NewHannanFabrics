@@ -12,7 +12,7 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       animation: {
-        spin988: "spin988 2s linear infinite",
+        spin988: "spin988 3s linear infinite",
       },
       keyframes: {
         spin988: {

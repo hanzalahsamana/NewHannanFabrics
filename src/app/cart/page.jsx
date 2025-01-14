@@ -28,7 +28,7 @@ const Cart = () => {
       <div className="max-w-[1100px] w-full pt-[50px]">
         {cartData?.length > 0 ? (
           <div>
-            <div className="flex w-full justify-between items-center mb-3">
+            <div className="flex w-full justify-between items-center mb-3 px-[10px]">
               <h1 className="text-[30px]">Your Cart</h1>
               <Link className="text-[15px] underline" href={'/products'}>Continue Shopping</Link>
             </div>
