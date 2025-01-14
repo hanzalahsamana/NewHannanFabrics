@@ -18,8 +18,6 @@ export const setCartData = createAsyncThunk(
   "cartData/setCartData",
   async (cartId, { rejectWithValue }) => {
     if (cartId && cartId !== 'undefined'&& cartId !== 'null') {
-      console.log("okkkkk" , cartId);
-      
       try {
         const response = await setCartDataApi(cartId);
         return response.products;

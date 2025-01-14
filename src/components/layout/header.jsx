@@ -24,9 +24,6 @@ const Header = () => {
 
   const { categories } = useSelector((state) => state?.categories);
 
-
-  console.log(SiteLogo.image);
-
   useEffect(() => {
 
 

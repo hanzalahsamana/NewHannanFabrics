@@ -10,8 +10,6 @@ export const fetchCategories = async (dispatch) => {
     dispatch(setcategories(response.data));
     return response.data;
   } catch (error) {
-    console.log(error , "qwerty");
-    
     dispatch(setCategoryError(error.message));
   } finally {
     dispatch(setCategoryLoading(false));

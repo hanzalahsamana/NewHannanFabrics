@@ -25,8 +25,6 @@ export const pagesContentSlice = createSlice({
 });
 
 export const selectPageByType = (state, pageType) =>{
-console.log(state , "wow");
-
   return state.pagesContent?.pagesContent?.find((page) => page.type === pageType);
 }
 
