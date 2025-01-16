@@ -10,6 +10,9 @@ import { MdSignalWifiConnectedNoInternet2 } from "react-icons/md";
 const ProductDetail = ({ params }) => {
   const { products, loading, error } = useSelector((state) => state.productData);
 
+  console.log("😣" , products);
+  
+
   if (loading) {
     return <Loader />;
   }

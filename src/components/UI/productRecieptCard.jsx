@@ -10,7 +10,7 @@ const ProductRecieptCard = ({ product }) => {
                 </div>
                 <div>
                     <p className='text-[15px] text-[#1f1f1f] mb-[10px] '>{product?.name}</p>
-                    <p className='text-[13px] text-[#1f1f1f]  '>{product?.size}</p>
+                    <p className='text-[13px] text-[#1f1f1f]  '>{product?.selectedSize}</p>
 
                 </div>
             </div>

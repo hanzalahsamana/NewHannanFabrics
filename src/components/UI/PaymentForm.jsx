@@ -64,8 +64,9 @@ const PaymentForm = ({ shipping, total, tax, discount, cartItem }) => {
       postalCode,
       phone,
     } = formData;
-    const extractedData = cartItem.map(({ name, quantity, discountedPrice , _id , images }) => ({
+    const extractedData = cartItem.map(({ name, selectedSize, quantity, discountedPrice , _id , images }) => ({
       name,
+      selectedSize,
       _id,
       image:images[0],
       quantity,

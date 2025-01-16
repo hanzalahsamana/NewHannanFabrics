@@ -10,14 +10,19 @@ import { TbTruckDelivery } from "react-icons/tb";
 import QuantityControl from "./quantityControl";
 import { useRouter } from "next/navigation";
 import ButtonLoader from "./buttonLoader";
+import { ConvertArray } from "@/Utils/CovertArray";
+import SizeController from "./SizeController";
 
 const ProductDetailCard = ({ product }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setmainImage] = useState(0);
-  const  { loading  }  = useSelector((state) => state?.cartData || []);
-
+  const { loading } = useSelector((state) => state?.cartData || []);
+  const sizes = ConvertArray(product?.size)
+  console.log(product , "wooooow");
+  const [selectedSize, setSelectedSize] = useState(sizes[0])
+  
 
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -28,7 +33,7 @@ const ProductDetailCard = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addCartData({ quantity: quantity, ...product }));
+    dispatch(addCartData({ quantity: quantity, selectedSize, ...product }));
     setQuantity(1)
   };
 
@@ -63,7 +68,7 @@ const ProductDetailCard = ({ product }) => {
                 <FaStar className="text-[orange]" />
                 <FaStar className="text-[orange]" />
                 <FaStar className="text-[orange]" />
-                <FaStar className="text-[orange]"/>
+                <FaStar className="text-[orange]" />
                 <FaStar />
               </span>{" "}
               4 Review
@@ -80,24 +85,27 @@ const ProductDetailCard = ({ product }) => {
           </div>
           <p
             className={
-              product?.status ? `${styles.InStock}` : `${styles.OutStock}`
+              product?.status || product?.stock ? `${styles.InStock}` : `${styles.OutStock}`
             }
           >
-            {product?.status ? "In Stock" : "Out Of Stock"}
+            {product?.status || product?.stock  ? "In Stock" : "Out Of Stock"}
           </p>
 
-          <QuantityControl
-            quantity={quantity}
-            increaseQuantity={increaseQuantity}
-            decreaseQuantity={decreaseQuantity}
-          />
+          <div className="flex flex-col gap-[20px]">
+
+
+            <QuantityControl
+              quantity={quantity}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+            />
+
+            <SizeController availableSizes={sizes} size={selectedSize} setSize={setSelectedSize} />
+          </div>
 
           <div className={styles.productDetail}>
             <p>
               Type: <strong>{product?.type}</strong>
-            </p>
-            <p>
-              Size: <strong>{product?.size} meter</strong>
             </p>
           </div>
 
@@ -106,7 +114,7 @@ const ProductDetailCard = ({ product }) => {
               onClick={handleAddToCart}
               className="py-[15px] w-full mt-3 bg-white border-black border-[2px] text-[#000000] text-[16px]  transition-all duration-300 hover:scale-105"
             >
-              {loading?<ButtonLoader/>: 'Add To Cart'}
+              {loading ? <ButtonLoader /> : 'Add To Cart'}
             </button>
             <button onClick={() => {
               handleAddToCart();
