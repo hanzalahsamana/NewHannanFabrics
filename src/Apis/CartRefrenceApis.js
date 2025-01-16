@@ -8,7 +8,7 @@ export const setCartDataApi = async (cartId) => {
     const response = await axios.get(`${BASE_URL}/getCartData?id=${cartId}`);
     return response.data[0];
   } catch (error) {
-    toast.error(error.message , "wow");
+    console.error(error.message);
   }
 };
 
@@ -22,8 +22,6 @@ export const addCartDataApi = async (addedProduct , cartId) => {
     localStorage.setItem("cartId", response.data.cartId);
     return response.data;
   } catch (error) {
-    console.log("///////");
-    
     console.error(error)
   }
 };
