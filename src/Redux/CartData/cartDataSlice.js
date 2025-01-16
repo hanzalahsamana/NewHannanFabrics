@@ -31,10 +31,10 @@ export const setCartData = createAsyncThunk(
 
 export const addCartData = createAsyncThunk(
   "cartData/addCartData",
-  async ({ _id, quantity }, { rejectWithValue }) => {
+  async (addedProduct, { rejectWithValue }) => {
     try {
       const cartID = localStorage.getItem("cartId");
-      const response = await addCartDataApi(_id, quantity , cartID);
+      const response = await addCartDataApi(addedProduct, cartID);
       return response.products;
     } catch (error) {
       return rejectWithValue(error.message);

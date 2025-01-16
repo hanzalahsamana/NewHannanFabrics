@@ -8,21 +8,21 @@ export const setCartDataApi = async (cartId) => {
     const response = await axios.get(`${BASE_URL}/getCartData?id=${cartId}`);
     return response.data[0];
   } catch (error) {
-    toast.error(error.message , "wow");
+    console.error(error.message);
   }
 };
 
-export const addCartDataApi = async (productId, quantity , cartId) => {
+export const addCartDataApi = async (addedProduct , cartId) => {
   try {
-    let url = `${BASE_URL}/addCart?productId=${productId}`;
+    let url = `${BASE_URL}/addCart`;
     if (cartId && cartId !== 'undefined') {
-        url += `&id=${cartId}`;
+        url += `?id=${cartId}`;
     }
-    const response = await axios.post(url, { quantity });
+    const response = await axios.post(url, addedProduct);
     localStorage.setItem("cartId", response.data.cartId);
     return response.data;
   } catch (error) {
-    toast.error(error);
+    console.error(error)
   }
 };
 
